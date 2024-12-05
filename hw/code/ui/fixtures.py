@@ -73,4 +73,9 @@ def credentials():
 
     if 'COOKIES' in credentials:
         credentials['COOKIES'] = literal_eval(credentials['COOKIES'])
+        for cookie in credentials['COOKIES']:
+            cookie['httpOnly'] = True
+            cookie['sameSite'] = 'None'
+            cookie['secure'] = True
+            cookie['domain'] = '.vk.com'
     return credentials
