@@ -1,3 +1,4 @@
+from ast import literal_eval
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -7,7 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 import undetected_chromedriver as uc
 from ui.pages.ads_vk_landing import BasePage
-from ui.pages.ads_vk_auth import MainPage
+from ui.pages.ads_vk_lk import LKPage
 
 from dotenv import dotenv_values
 
@@ -69,9 +70,7 @@ def all_drivers(config, request):
 def credentials():
     credentials = dotenv_values(".credentials_env")
     credentials = dict(credentials)
+
+    if 'COOKIES' in credentials:
+        credentials['COOKIES'] = literal_eval(credentials['COOKIES'])
     return credentials
-
-
-@pytest.fixture(scope='session')
-def student_test_data():
-    return {"username": "Фёдор Долматов", "profile_link": "https://education.vk.company/profile/user_202440/"}

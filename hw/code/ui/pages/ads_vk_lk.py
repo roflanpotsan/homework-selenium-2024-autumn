@@ -1,8 +1,8 @@
 from ui.pages.ads_vk_base import BasePage
-from ui.pages.ads_vk_auth import MainPage
 from ui.locators.vk_ads_locators import LandingPageLocators
 
-class LandingPage(BasePage):
+class LKPage(BasePage):
 
     locators = LandingPageLocators
-    url = 'https://ads.vk.com/'
+    url = 'https://ads.vk.com/hq/overview'
+        

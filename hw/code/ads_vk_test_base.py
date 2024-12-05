@@ -3,6 +3,7 @@ from contextlib import contextmanager
 import pytest
 
 from ui.pages.ads_vk_landing import LandingPage
+from ui.pages.ads_vk_register import RegisterPage
 
 
 class BaseCase:
@@ -26,6 +27,12 @@ class BaseCase:
 
         self.landing_page = LandingPage(driver)
         if self.authorize:
-            email = credentials['EMAIL']
-            password = credentials['PASSWORD']
-            self.main_page = self.landing_page.login(email, password)
+            cookies = credentials.get('COOKIES', [])
+        
+            for cookie in cookies:
+                self.driver.add_cookie(cookie)
+        
+            # Refresh page to apply cookies
+            self.driver.refresh()
+
+            self.main_page = self.landing_page.login()
