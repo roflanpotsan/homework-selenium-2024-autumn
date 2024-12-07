@@ -6,7 +6,6 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FireFoxService
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
-import undetected_chromedriver as uc
 from ui.pages.ads_vk_landing import BasePage
 from ui.pages.ads_vk_lk import LKPage
 
@@ -34,7 +33,7 @@ def driver(config):
         )
     elif browser == 'chrome':
         service = ChromeService(executable_path=ChromeDriverManager().install())
-        driver = uc.Chrome()
+        driver = webdriver.Chrome(service=service)
     elif browser == 'firefox':
         service = FireFoxService(executable_path=GeckoDriverManager().install())
         driver = webdriver.Firefox(service=service)
