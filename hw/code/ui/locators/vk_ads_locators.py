@@ -8,6 +8,7 @@ class LandingPageLocators:
     def AT_PROFILE_BUTTON(profile_number):
         return (By.XPATH, f'//div[@class="vkc__OrganizationList__listWrapper"]/div[{profile_number}]')
     CREATE_PROFILE_BUTTON = (By.XPATH, f'//div[@class="vkc__OrganizationList__listWrapper"]/div[last()]')
+    BUDGET_LINK = (By.CSS_SELECTOR, '[data-entityid="budget"]')  # Ссылка на страницу бюджета
 
 
 class RegisterPageLocators:
