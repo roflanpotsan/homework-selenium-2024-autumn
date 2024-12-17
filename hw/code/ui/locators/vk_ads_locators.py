@@ -9,6 +9,7 @@ class LandingPageLocators:
         return (By.XPATH, f'//div[@class="vkc__OrganizationList__listWrapper"]/div[{profile_number}]')
     CREATE_PROFILE_BUTTON = (By.XPATH, f'//div[@class="vkc__OrganizationList__listWrapper"]/div[last()]')
     BUDGET_LINK = (By.CSS_SELECTOR, '[data-entityid="budget"]')  # Ссылка на страницу бюджета
+    AUDITORY_LINK = (By.CSS_SELECTOR, '[data-entityid="audience"]')
 
 
 class RegisterPageLocators:
