@@ -6,6 +6,7 @@ from ui.pages.ads_vk_landing import LandingPage
 from ui.pages.ads_vk_register import RegisterPage
 from ui.pages.ads_vk_budget import BudgetPage
 from ui.pages.ads_vk_auditory import AuditoryPage
+from ui.pages.ads_vk_commersion import CommersionPage
 
 class BaseCase:
     authorize = True
@@ -29,6 +30,7 @@ class BaseCase:
         self.landing_page = LandingPage(driver)
         self.budget_page = BudgetPage(driver)
         self.auditory_page = AuditoryPage(driver)
+        self.commersion_page = CommersionPage(driver)
         if self.authorize:
             cookies = credentials.get('COOKIES', [])
         
