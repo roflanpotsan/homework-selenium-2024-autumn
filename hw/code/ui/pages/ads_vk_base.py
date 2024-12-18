@@ -5,7 +5,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from ui.locators import vk_ads_locators
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.common import TimeoutException
 
 class PageNotOpenedExeption(Exception):
     pass
@@ -41,6 +41,15 @@ class BasePage(object):
             elem.click()
         except:
             pass
+
+    def find_all_presence(self, locator, timeout=1) -> list[WebElement]:
+        return self.wait(timeout).until(EC.presence_of_all_elements_located(locator))
+    def became_invisible(self, locator, timeout=None):
+        try:
+            self.wait(timeout).until(EC.invisibility_of_element_located(locator))
+            return True
+        except TimeoutException:
+            return False
 
     @allure.step('Input')
     def input(self, locator, data, timeout=default_timeout):

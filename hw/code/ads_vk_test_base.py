@@ -5,6 +5,7 @@ import pytest
 from ui.pages.ads_vk_landing import LandingPage
 from ui.pages.ads_vk_register import RegisterPage
 from ui.pages.ads_vk_budget import BudgetPage
+from ui.pages.ads_vk_auditory import AuditoryPage
 
 class BaseCase:
     authorize = True
@@ -27,6 +28,7 @@ class BaseCase:
 
         self.landing_page = LandingPage(driver)
         self.budget_page = BudgetPage(driver)
+        self.auditory_page = AuditoryPage(driver)
         if self.authorize:
             cookies = credentials.get('COOKIES', [])
         
