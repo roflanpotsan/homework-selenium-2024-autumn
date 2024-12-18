@@ -37,7 +37,7 @@ class BasePage(object):
     @allure.step('Click')
     def click(self, locator, timeout=default_timeout) -> WebElement:
         try:
-            elem = self.wait(timeout).until(EC.element_to_be_clickable(locator))
+            elem = self.wait(1).until(EC.element_to_be_clickable(locator))
             elem.click()
         except:
             pass

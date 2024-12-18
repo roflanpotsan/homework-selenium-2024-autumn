@@ -24,3 +24,21 @@ class RegisterPageLocators:
     SUBMIT = (By.XPATH, '//button[@type="submit"]')
 
     EMAIL_ERROR_MSG = (By.XPATH, '//*[@class="registration_panelInnerWrapperContentForm__x3heD"]/div[4]/span[2]')
+    TAX_PAYER_INDEX_ERROR_MSG = (By.XPATH, '//*[@class="registration_panelInnerWrapperContentForm__x3heD"]/div[6]/span[2]')
+    NAME_ERROR_MSG = (By.XPATH, '//*[@class="registration_panelInnerWrapperContentForm__x3heD"]/div[7]/span[2]')
+
+    LANG_TOGGLE_EN = (By.XPATH, '//*[@class="vkuiSegmentedControl__in"]//label[2]')
+    LANG_TOGGLE_RU = (By.XPATH, '//*[@class="vkuiSegmentedControl__in"]//label[1]')
+
+class LKPageLocators:
+    GENERAL_SETTINGS = (By.XPATH, '//a[@data-route="settings"]')
+
+class SettingsPageLocators:
+    GENERAL_SETTINGS = (By.XPATH, '//a[@data-route="settings"]')
+    LK_EMAIL = (By.XPATH, '//input[@data-testid="general-email"]')
+    LK_NAME = (By.XPATH, '//input[@data-testid="general-ord-name"]')
+    LK_TAX_PAYER_ID = (By.XPATH, '//input[@data-testid="general-ord-inn"]')
+
+    GENERAL_SETTINGS_TAB = (By.XPATH, '//div[@class="vkuiTabs__in"]//div[1]')
+    NOTIFICATION_SETTINGS_TAB = (By.XPATH, '//div[@class="vkuiTabs__in"]//div[3]')
+    ACCESS_SETTINGS_TAB = (By.XPATH, '//div[@class="vkuiTabs__in"]//div[3]')
