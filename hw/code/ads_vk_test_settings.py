@@ -50,6 +50,7 @@ class TestSettings(BaseCase):
         self.settings_page.set_lk_tax_payer_id(new_tpid)
         self.settings_page.add_email(email)
         self.settings_page.save_changes()
+        self.settings_page.wait(2)
         self.settings_page.reload()
         assert email in self.settings_page.get_email_confirmation_msg()
 
@@ -71,14 +72,3 @@ class TestSettings(BaseCase):
         self.settings_page.open_notification_settings_tab()
 
         assert len(self.settings_page.get_notifications_list()) == 0
-
-    # def test_add_lk_access(self):
-    #     self.settings_page.switch_to_first_accout()
-    #     self.lk_page.open_general_settings()
-    #     lk_id = self.settings_page.get_lk_id()
-
-    #     self.settings_page.switch_to_current_account()
-    #     self.lk_page.open_general_settings()
-    #     self.settings_page.open_access_settings_tab()
-    #     self.settings_page.create_access(lk_id)
-    #     self.settings_page.remove_access()
