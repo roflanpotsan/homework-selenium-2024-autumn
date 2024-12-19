@@ -32,9 +32,7 @@ class TestSettings(BaseCase):
     def test_save_changes(self):
         new_name = 'Рофлан-лицо'
         new_tpid = '145047727543'
-        self.settings_page.set_lk_name(new_name)
-        self.settings_page.set_lk_tax_payer_id(new_tpid)
-        self.settings_page.save_changes()
+        self.settings_page.save_lk_credentials(new_name, new_tpid)
         self.settings_page.reload()
 
         assert self.settings_page.get_lk_name() == new_name
@@ -44,10 +42,7 @@ class TestSettings(BaseCase):
         email = "roflanpotsan@yandex.ru"
         new_name = 'Рофлан-лицо'
         new_tpid = '145047727543'
-        self.settings_page.set_lk_name(new_name)
-        self.settings_page.set_lk_tax_payer_id(new_tpid)
-        self.settings_page.add_email(email)
-        self.settings_page.save_changes()
+        self.settings_page.save_lk_credentials(new_name, new_tpid, email)
         self.settings_page.wait(2)
         self.settings_page.reload()
         assert email in self.settings_page.get_email_confirmation_msg()
@@ -55,9 +50,7 @@ class TestSettings(BaseCase):
     def test_request_api_access(self):
         new_name = 'Рофлан-лицо'
         new_tpid = '145047727543'
-        self.settings_page.set_lk_name(new_name)
-        self.settings_page.set_lk_tax_payer_id(new_tpid)
-        self.settings_page.save_changes()
+        self.settings_page.save_lk_credentials(new_name, new_tpid)
         self.settings_page.reload()
         self.settings_page.request_api_access(phone='+1231231231231')
         assert self.settings_page.get_api_key() != ""
