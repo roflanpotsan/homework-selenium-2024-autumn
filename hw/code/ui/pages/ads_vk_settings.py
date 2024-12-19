@@ -32,6 +32,15 @@ class SettingsPage(BasePage):
         self.find(self.locators.LK_TAX_PAYER_ID).clear()
         self.input(self.locators.LK_TAX_PAYER_ID, tpid)
 
+    def save_lk_credentials(self, name=None, tax_payer_id=None, email=None):
+        if name:
+            self.set_lk_name(name)
+        if tax_payer_id:
+            self.set_lk_tax_payer_id(tax_payer_id)
+        if email:
+            self.add_email(email)
+        self.save_changes()
+    
     def cancel_changes(self):
         self.click(self.locators.CANCEL_CHANGES_BTN)
 
