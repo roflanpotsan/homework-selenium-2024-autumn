@@ -8,15 +8,20 @@ class TestCommersion(BaseCase):
         self.landing_page.wait(15).until(lambda driver: driver.current_url == 'https://ads.vk.com/hq/overview')
         self.commersion_page.click(self.landing_page.locators.COMMERSION_LINK)
 
-    def test_create_and_delete_catalog(self):
+    def test_create_catalog(self):
         self.navigate_to_commersion()
         self.commersion_page.click_dismiss_modal_button()
         self.commersion_page.click_create_catalog_button()
         self.commersion_page.fill_input(self.commersion_page.locators.NAME_INPUT, "New catalog")
         self.commersion_page.click_feed_button()
         self.commersion_page.fill_input(self.commersion_page.locators.FEED_INPUT, "https://vk.com/archstudios")
-        print("before")
         self.commersion_page.click_create_button()
+        self.commersion_page.check_catalog_created()
+
+    def test_catalog_tabs(self):
+        self.navigate_to_commersion()
+        self.commersion_page.click_catalog_button()
+
         self.commersion_page.click_catalog_goods_tab()
         self.commersion_page.click_catalog_goods_tab_settings()
         self.commersion_page.click_catalog_goods_tab_checkbox()
@@ -25,12 +30,16 @@ class TestCommersion(BaseCase):
         self.commersion_page.click_catalog_groups_tab()
         self.commersion_page.click_catalog_groups_tab_create()
         self.commersion_page.click_catalog_groups_tab_filters()
-        self.commersion_page.fill_input(self.commersion_page.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_INPUT_NAME, "New group")
-        self.commersion_page.fill_input(self.commersion_page.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_INPUT_VALUE, "8000")
+        self.commersion_page.fill_input(self.commersion_page.locators.CATALOG_GROUPS_INPUT_NAME, "New group")
+        self.commersion_page.fill_input(self.commersion_page.locators.CATALOG_GROUPS_INPUT_VALUE, "8000")
         self.commersion_page.click_catalog_groups_tab_filters_confirm()
 
         self.commersion_page.click_catalog_diagnostics_tab()
         self.commersion_page.check_catalog_diagnostics_tab()
+
+    def test_delete_catalog(self):
+        self.navigate_to_commersion()
+        self.commersion_page.click_catalog_button()
 
         self.commersion_page.click_catalog_settings_button()
         self.commersion_page.click_catalog_delete_button()
