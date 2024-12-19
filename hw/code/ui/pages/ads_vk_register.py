@@ -1,4 +1,3 @@
-import time
 from ui.pages.ads_vk_base import BasePage
 from ui.locators.vk_ads_locators import RegisterPageLocators
 from ui.pages.ads_vk_lk import LKPage
@@ -7,6 +6,7 @@ class RegisterPage(BasePage):
 
     locators = RegisterPageLocators
     url = 'https://ads.vk.com/hq/registration'
+    default_timeout = 15
     
     def register_advertiser_physical(self, email="", tax_payer_idx="", name="", should_redirect=False):
         self.click(self.locators.CREATE_PROFILE_CARD)

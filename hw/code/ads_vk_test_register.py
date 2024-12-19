@@ -7,11 +7,16 @@ class TestRegister(BaseCase):
     authorize = True
 
     # no teardown due to inability to actually delete a newly created profile
+    # try catch antipattern due to inability to create infinite profiles & at the start there may be no profiles
     @pytest.fixture(autouse=True)
     def setup_register(self):
-        self.landing_page.login()
-        self.landing_page.create_profile()
-        self.register_page = RegisterPage(self.driver)
+        try:
+            self.landing_page.login()
+            self.register_page = self.landing_page.create_account_profile_exists()
+        except:
+            self.landing_page.reopen()
+            self.landing_page.login()
+            self.register_page = self.landing_page.create_account_new_profile()
 
     def test_register_correct_inputs(self):
         input_email = "roflanpotsan@ya.ru"
@@ -25,6 +30,9 @@ class TestRegister(BaseCase):
         assert self.settings_page.get_lk_name() == input_name
         assert self.settings_page.get_lk_tax_payer_id() == input_tax_payer_id
         assert self.settings_page.get_lk_email() == input_email
+
+        self.settings_page.delete_lk()
+        self.settings_page.wait().until(lambda driver: driver.current_url == self.landing_page.url)
 
     def test_register_incorrect_email(self):
         input_email = "roflanpotsan@..."

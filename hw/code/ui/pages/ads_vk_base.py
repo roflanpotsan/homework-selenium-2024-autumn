@@ -15,7 +15,7 @@ class BasePage(object):
 
     locators = vk_ads_locators.LandingPageLocators()
     url = 'https://ads.vk.com/'
-    default_timeout = 5
+    default_timeout = 15
 
     def is_opened(self, timeout=default_timeout):
         started = time.time()
@@ -37,8 +37,8 @@ class BasePage(object):
     @allure.step('Click')
     def click(self, locator, timeout=default_timeout) -> WebElement:
         try:
-            elem = self.wait(1).until(EC.element_to_be_clickable(locator))
-            elem.click()
+            elem = self.wait(3).until(EC.element_to_be_clickable(locator))
+            self.driver.execute_script("arguments[0].click();", elem)
         except:
             pass
 
@@ -55,3 +55,6 @@ class BasePage(object):
     def input(self, locator, data, timeout=default_timeout):
         elem = self.find(locator, timeout=timeout)
         elem.send_keys(data)
+
+    def reload(self):
+        self.driver.refresh()
