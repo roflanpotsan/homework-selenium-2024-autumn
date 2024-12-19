@@ -18,6 +18,51 @@ class CommersionPageLocators:
         By.XPATH,
         '//div[contains(@class, "ModalRoot_componentWrapper__uzHTL")]',
     )
+
+    CATALOG_TAB_GOODS = (By.CSS_SELECTOR, '[data-testid="catalog-tabs-goods"]')
+
+    CATALOG_TAB_GOODS_SETTINGS = (
+        By.XPATH,
+        '//button[contains(@class, "TableSettings_settingsButton__uz8xK")]',
+    )
+
+    CATALOG_TAB_GOODS_SETTINGS_CHECKBOX = (
+        By.XPATH,
+        '//span[text()="Наличие"]',
+    )
+
+    CATALOG_TAB_GOODS_SETTINGS_CONFIRM = (
+        By.XPATH,
+        '//span[text()="Применить"]',
+    )
+
+    CATALOG_TAB_GROUPS = (By.CSS_SELECTOR, '[data-testid="catalog-tabs-groups"]')
+
+    CATALOG_TAB_GROUPS_CREATE = (
+        By.XPATH,
+        '//span[text()="Создать группу"]',
+    )
+
+    CATALOG_TAB_GROUPS_CREATE_BY_FILTERS = (
+        By.XPATH,
+        '//span[text()="Использовать фильтры"]',
+    )
+
+    CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_INPUT_NAME = (
+        By.XPATH,
+        '//input[@name="groupName"]',
+    )
+
+    CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_INPUT_VALUE = (
+        By.XPATH,
+        '//div[@class="vkuiFormItem vkuiFormItem--withPadding vkuiInternalFormItem vkuiFormItem--sizeY-none vkuiInternalFormItem--sizeY-none Condition_formItem__Obi-n Condition_conditionValue__zV0Wg"]//input[@type="text"]',
+    )
+
+    CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_CONFIRM = (
+        By.XPATH,
+        '//span[text()="Сохранить"]',
+    )
+
     CATALOG_SETTINGS_BUTTON = (
         By.XPATH,
         '//button[contains(@class, "vkuiButton--mode-outline")]',
@@ -34,4 +79,8 @@ class CommersionPageLocators:
     MODAL_DISMISS_BUTTON = (
         By.XPATH,
         '//div[contains(@class, "vkuiModalDismissButton")]',
+    )
+    CATALOGS_TABLE = (
+        By.XPATH,
+        '//div[contains(@class, "table_table__2JcCk")]',
     )

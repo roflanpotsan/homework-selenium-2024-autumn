@@ -39,6 +39,55 @@ class CommersionPage(BasePage):
     def wait_for_window_to_dissapear(self):
         self.became_invisible(self.locators.CREATE_CATALOG_WINDOW, 2)
 
+    def click_catalog_goods_tab(self):
+        catalog_goods_tab = self.wait(timeout=5).until(
+            EC.presence_of_element_located(self.locators.CATALOG_TAB_GOODS)
+        )
+        catalog_goods_tab.click()
+
+    def click_catalog_goods_tab_settings(self):
+        catalog_goods_tab_settings = self.wait(timeout=5).until(
+            EC.presence_of_element_located(self.locators.CATALOG_TAB_GOODS_SETTINGS)
+        )
+        catalog_goods_tab_settings.click()
+
+    def click_catalog_goods_tab_checkbox(self):
+        catalog_goods_tab_checkbox = self.wait(timeout=5).until(
+            EC.presence_of_element_located(self.locators.CATALOG_TAB_GOODS_SETTINGS_CHECKBOX)
+        )
+        catalog_goods_tab_checkbox.click()
+
+    def click_catalog_goods_tab_confirm(self):
+        catalog_goods_tab_confirm = self.wait(timeout=10).until(
+            EC.element_to_be_clickable(self.locators.CATALOG_TAB_GOODS_SETTINGS_CONFIRM)
+        )
+        catalog_goods_tab_confirm.click()
+
+    def click_catalog_groups_tab(self):
+        catalog_groups_tab = self.wait(timeout=5).until(
+            EC.presence_of_element_located(self.locators.CATALOG_TAB_GROUPS)
+        )
+        catalog_groups_tab.click()
+
+    def click_catalog_groups_tab_create(self):
+        catalog_groups_tab_create = self.wait(timeout=10).until(
+            EC.presence_of_element_located(self.locators.CATALOG_TAB_GROUPS_CREATE)
+        )
+        catalog_groups_tab_create.click()
+
+    def click_catalog_groups_tab_filters(self):
+        catalog_groups_tab_filters = self.wait(timeout=5).until(
+            EC.presence_of_element_located(self.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTERS)
+        )    
+        catalog_groups_tab_filters.click()
+
+    def click_catalog_groups_tab_filters_confirm(self):
+        catalog_groups_tab_filters_confirm = self.wait(timeout=10).until(
+            EC.presence_of_element_located(self.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_CONFIRM)
+        )
+        catalog_groups_tab_filters_confirm.click()
+
+
     def click_catalog_settings_button(self):
         catalog_setting_button = self.wait(timeout=5).until(
             EC.presence_of_element_located(self.locators.CATALOG_SETTINGS_BUTTON)
@@ -56,3 +105,6 @@ class CommersionPage(BasePage):
             EC.element_to_be_clickable(self.locators.DELETE_BUTTON)
         )
         confirm_button.click()
+
+    def check_catalog_deleted(self):
+        self.became_invisible(self.locators.CATALOGS_TABLE, 2)
