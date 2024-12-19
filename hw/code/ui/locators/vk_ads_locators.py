@@ -11,6 +11,8 @@ class LandingPageLocators:
     CREATE_PROFILE_BUTTON = (By.XPATH, f'//div[@class="vkc__OrganizationList__listWrapper"]/div[last()]')
     BUDGET_LINK = (By.CSS_SELECTOR, '[data-entityid="budget"]')  # Ссылка на страницу бюджета
     AUDITORY_LINK = (By.CSS_SELECTOR, '[data-entityid="audience"]')
+    COMMERSION_LINK = (By.CSS_SELECTOR, '[data-entityid="catalogs"]')  # Ссылка на страницу бюджета
+
 
 
 class RegisterPageLocators:
