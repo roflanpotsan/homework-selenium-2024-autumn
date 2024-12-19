@@ -8,7 +8,7 @@ class AuditoryPageLocators:
         '//div[h5//div[text()="Название"]]//input[@type="text"]',
     )
 
-    ADD_SOURCE_BUTTON = (By.XPATH, '//button[.//span[text()="Добавить источник"]]')
+    ADD_SOURCE_BUTTON = (By.XPATH, '//button[.//span[text()="Включить источник"]]')
     KEY_REFRASE_BUTTON = (
         By.XPATH,
         '//div[contains(@class, "vkuiSimpleCell") and .//span[text()="Ключевые фразы"]]',
