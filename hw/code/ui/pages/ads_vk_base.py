@@ -58,3 +58,10 @@ class BasePage(object):
 
     def reload(self):
         self.driver.refresh()
+
+    def retry_operation(self, operation, fallback):
+        try:
+            return operation()
+        except Exception as e:
+            print(f"Primary operation failed: {e}. Retrying with fallback...")
+            return fallback()

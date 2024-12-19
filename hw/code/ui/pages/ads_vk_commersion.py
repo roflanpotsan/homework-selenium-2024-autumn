@@ -122,3 +122,4 @@ class CommersionPage(BasePage):
 
     def check_catalog_deleted(self):
         self.became_invisible(self.locators.CATALOGS_TABLE, 2)
+        

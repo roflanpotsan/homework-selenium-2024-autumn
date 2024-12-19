@@ -92,3 +92,9 @@ class SettingsPage(BasePage):
     def remove_access(self):
         self.click(self.locators.REMOVE_ACCESS_BTN)
         self.click(self.locators.REMOVE_ACCESS_CONFIRM)
+    
+    def setup_name_and_tpid(self, name, tpid):
+        self.set_lk_name(name)
+        self.set_lk_tax_payer_id(tpid)
+        self.save_changes()
+        self.reload()

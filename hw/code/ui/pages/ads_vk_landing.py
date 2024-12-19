@@ -34,3 +34,11 @@ class LandingPage(BasePage):
     def reopen(self):
         self.driver.get(self.url)
 
+    def open_register_page(self):
+        def open_default(self):
+            self.login()
+            return self.create_account_profile_exists()
+        def open_fallback(self):
+            self.login()
+            return self.create_account_new_profile()
+        return self.retry_operation(operation=lambda: open_default(self), fallback=lambda: open_fallback(self))

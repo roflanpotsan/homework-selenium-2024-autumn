@@ -5,21 +5,14 @@ class TestRegister(BaseCase):
     authorize = True
 
     # no teardown due to inability to actually delete a newly created profile
-    # try catch antipattern due to inability to create infinite profiles & at the start there may be no profiles
     @pytest.fixture(autouse=True)
     def setup_register(self):
-        try:
-            self.landing_page.login()
-            self.register_page = self.landing_page.create_account_profile_exists()
-        except:
-            self.landing_page.reopen()
-            self.landing_page.login()
-            self.register_page = self.landing_page.create_account_new_profile()
+        self.register_page = self.landing_page.open_register_page()
 
-    def test_register_correct_inputs(self):
-        input_email = "roflanpotsan@ya.ru"
-        input_name = 'Рофлан    лицо---хехе'
-        input_tax_payer_id = '145047727543'
+    def test_register_correct_inputs(self, constants):
+        input_email = constants['base_email']
+        input_name = constants['name']
+        input_tax_payer_id = constants['tpid']
         self.lk_page = self.register_page.register_advertiser_physical(email=input_email, 
                                                                              name=input_name, 
                                                                              tax_payer_idx=input_tax_payer_id,
@@ -32,29 +25,27 @@ class TestRegister(BaseCase):
         self.settings_page.delete_lk()
         self.settings_page.wait().until(lambda driver: driver.current_url == self.landing_page.url)
 
-    def test_register_incorrect_email(self):
-        input_email = "roflanpotsan@..."
+    def test_register_incorrect_email(self, constants):
+        input_email = constants['incorrect_email']
         self.register_page.register_advertiser_physical(email=input_email)
         assert self.register_page.get_email_error_msg() == 'Некорректный email адрес'
     
     def test_register_empty_email(self):
-        input_email = ""
-        self.register_page.register_advertiser_physical(email=input_email)
+        self.register_page.register_advertiser_physical()
         assert self.register_page.get_email_error_msg() == 'Обязательное поле'
     
-    def test_register_incorrect_tax_payer_index(self):
-        input_email = "roflanpotsan@ya.ru"
-        input_name = ''
-        input_tax_payer_id = '145047727542'
+    def test_register_incorrect_tax_payer_index(self, constants):
+        input_email = constants['base_email']
+        input_tax_payer_id = constants['incorrect_tpid']
         self.lk_page = self.register_page.register_advertiser_physical(email=input_email, 
-                                                                             name=input_name, 
+                                                                             name="", 
                                                                              tax_payer_idx=input_tax_payer_id)
         assert self.register_page.get_tax_payer_index_error_msg() == 'Некорректный ИНН'
 
-    def test_register_incorrect_name(self):
-        input_email = "roflanpotsan@ya.ru"
-        input_name = 'roflanpotsan'
-        input_tax_payer_id = '145047727543'
+    def test_register_incorrect_name(self, constants):
+        input_email = constants['base_email']
+        input_name = constants['incorrect_name']
+        input_tax_payer_id = constants['tpid']
         self.lk_page = self.register_page.register_advertiser_physical(email=input_email, 
                                                                              name=input_name, 
                                                                              tax_payer_idx=input_tax_payer_id)

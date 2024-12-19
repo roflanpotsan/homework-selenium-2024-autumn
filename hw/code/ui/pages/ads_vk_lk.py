@@ -11,3 +11,4 @@ class LKPage(BasePage):
     def open_general_settings(self):
         self.click(self.locators.GENERAL_SETTINGS)
         return SettingsPage(self.driver)
+    

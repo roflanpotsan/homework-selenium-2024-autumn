@@ -37,3 +37,4 @@ class RegisterPage(BasePage):
     
     def get_create_account_button_text(self):
         return self.find(self.locators.CREATE_PROFILE_CARD).text
+    

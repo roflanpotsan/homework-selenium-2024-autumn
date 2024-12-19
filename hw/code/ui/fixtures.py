@@ -77,4 +77,17 @@ def credentials():
             cookie['sameSite'] = 'None'
             cookie['secure'] = True
             cookie['domain'] = '.vk.com'
-    return credentials
+    return credentials 
+
+@pytest.fixture()
+def constants():
+    return {
+        'name': 'Рофлан-лицо',
+        'tpid' : '145047727543',
+        'email' : "roflanpotsan@yandex.ru",
+        'phone': '+1231231231231',
+        'incorrect_tpid': '145047727542',
+        'incorrect_name': 'roflanpotsan',
+        'incorrect_email': 'roflanpotsan@...',
+        'base_email': 'roflanpotsan@ya.ru'
+    }
