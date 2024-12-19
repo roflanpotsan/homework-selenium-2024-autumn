@@ -29,7 +29,10 @@ class TestCommersion(BaseCase):
         self.commersion_page.fill_input(self.commersion_page.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_INPUT_VALUE, "8000")
         self.commersion_page.click_catalog_groups_tab_filters_confirm()
 
-        # self.commersion_page.click_catalog_settings_button()
-        # self.commersion_page.click_catalog_delete_button()
-        # self.commersion_page.confirm_delete()
-        # self.commersion_page.check_catalog_deleted()
+        self.commersion_page.click_catalog_diagnostics_tab()
+        self.commersion_page.check_catalog_diagnostics_tab()
+
+        self.commersion_page.click_catalog_settings_button()
+        self.commersion_page.click_catalog_delete_button()
+        self.commersion_page.confirm_delete()
+        self.commersion_page.check_catalog_deleted()
