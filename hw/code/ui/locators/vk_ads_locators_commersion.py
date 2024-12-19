@@ -19,6 +19,16 @@ class CommersionPageLocators:
         '//div[contains(@class, "ModalRoot_componentWrapper__uzHTL")]',
     )
 
+    CATALOG_WINDOW = (
+        By.XPATH,
+        '//div[contains(@class, "layout_mainWithPadding__ML9uA" )]'
+    )
+
+    CATALOG_BUTTON = (
+        By.XPATH,
+        '//div[contains(@class, "CatalogsTable_item__fUdEC")]'
+    )
+
     CATALOG_TAB_GOODS = (By.CSS_SELECTOR, '[data-testid="catalog-tabs-goods"]')
 
     CATALOG_TAB_GOODS_SETTINGS = (
@@ -48,17 +58,17 @@ class CommersionPageLocators:
         '//span[text()="Использовать фильтры"]',
     )
 
-    CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_INPUT_NAME = (
+    CATALOG_GROUPS_INPUT_NAME = (
         By.XPATH,
         '//input[@name="groupName"]',
     )
 
-    CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_INPUT_VALUE = (
+    CATALOG_GROUPS_INPUT_VALUE = (
         By.XPATH,
         '//div[@class="vkuiFormItem vkuiFormItem--withPadding vkuiInternalFormItem vkuiFormItem--sizeY-none vkuiInternalFormItem--sizeY-none Condition_formItem__Obi-n Condition_conditionValue__zV0Wg"]//input[@type="text"]',
     )
 
-    CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_CONFIRM = (
+    CATALOG_GROUPS_CREATE_BY_FILTERS_CONFIRM = (
         By.XPATH,
         '//span[text()="Сохранить"]',
     )
@@ -69,8 +79,6 @@ class CommersionPageLocators:
     )
 
     CATALOG_TAB_DIAGNOSTICS = (By.CSS_SELECTOR, '[data-testid="catalog-tabs-diagnostics"]')
-
-
 
     CATALOG_TAB_DIAGNOSTICS_ALL_GOOD = (
         By.XPATH,

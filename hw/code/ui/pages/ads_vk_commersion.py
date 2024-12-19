@@ -7,9 +7,8 @@ class CommersionPage(BasePage):
     locators = CommersionPageLocators
 
     def click_dismiss_modal_button(self):
-        dismiss_modal_button = self.wait(timeout=5).until(
-            EC.presence_of_element_located(self.locators.MODAL_DISMISS_BUTTON)
-        )
+
+        dismiss_modal_button = self.find(self.locators.MODAL_DISMISS_BUTTON, timeout=5)
         dismiss_modal_button.click()
 
     def click_create_catalog_button(self):
@@ -23,10 +22,8 @@ class CommersionPage(BasePage):
         input_field.clear()
         input_field.send_keys(value)
 
-    def click_feed_button(self):
-        feed_button = self.wait(timeout=5).until(
-            EC.presence_of_element_located(self.locators.FEED_BUTTON)
-        )
+    def click_feed_button(self):    
+        feed_button = self.find(self.locators.FEED_BUTTON, timeout=5)
         feed_button.click()
 
     def click_create_button(self):
@@ -36,25 +33,29 @@ class CommersionPage(BasePage):
         except Exception as e:
             print(f"Error occured while clicking create button: {e}")
 
+    def check_catalog_created(self):
+        try:
+            self.find(self.locators.CATALOG_WINDOW, timeout=10)
+        except Exception as e:
+            print(f"Error occurred while checking diagnostics all good: {e}")
+
     def wait_for_window_to_dissapear(self):
         self.became_invisible(self.locators.CREATE_CATALOG_WINDOW, 2)
 
+    def click_catalog_button(self):
+        catalog_button = self.find(self.locators.CATALOG_BUTTON, timeout=5)
+        catalog_button.click()
+
     def click_catalog_goods_tab(self):
-        catalog_goods_tab = self.wait(timeout=5).until(
-            EC.presence_of_element_located(self.locators.CATALOG_TAB_GOODS)
-        )
+        catalog_goods_tab = self.find(self.locators.CATALOG_TAB_GOODS, timeout=5)
         catalog_goods_tab.click()
 
     def click_catalog_goods_tab_settings(self):
-        catalog_goods_tab_settings = self.wait(timeout=5).until(
-            EC.presence_of_element_located(self.locators.CATALOG_TAB_GOODS_SETTINGS)
-        )
+        catalog_goods_tab_settings = self.find(self.locators.CATALOG_TAB_GOODS_SETTINGS, timeout=5)
         catalog_goods_tab_settings.click()
 
     def click_catalog_goods_tab_checkbox(self):
-        catalog_goods_tab_checkbox = self.wait(timeout=5).until(
-            EC.presence_of_element_located(self.locators.CATALOG_TAB_GOODS_SETTINGS_CHECKBOX)
-        )
+        catalog_goods_tab_checkbox = self.find(self.locators.CATALOG_TAB_GOODS_SETTINGS_CHECKBOX, timeout=5)
         catalog_goods_tab_checkbox.click()
 
     def click_catalog_goods_tab_confirm(self):
@@ -64,34 +65,24 @@ class CommersionPage(BasePage):
         catalog_goods_tab_confirm.click()
 
     def click_catalog_groups_tab(self):
-        catalog_groups_tab = self.wait(timeout=5).until(
-            EC.presence_of_element_located(self.locators.CATALOG_TAB_GROUPS)
-        )
+        catalog_groups_tab = self.find(self.locators.CATALOG_TAB_GROUPS, timeout=5)
         catalog_groups_tab.click()
 
     def click_catalog_groups_tab_create(self):
-        catalog_groups_tab_create = self.wait(timeout=10).until(
-            EC.presence_of_element_located(self.locators.CATALOG_TAB_GROUPS_CREATE)
-        )
+        catalog_groups_tab_create = self.find(self.locators.CATALOG_TAB_GROUPS_CREATE, timeout=5)
         catalog_groups_tab_create.click()
 
     def click_catalog_groups_tab_filters(self):
-        catalog_groups_tab_filters = self.wait(timeout=5).until(
-            EC.presence_of_element_located(self.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTERS)
-        )    
+        catalog_groups_tab_filters = self.find(self.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTERS, timeout=5)   
         catalog_groups_tab_filters.click()
 
     def click_catalog_groups_tab_filters_confirm(self):
-        catalog_groups_tab_filters_confirm = self.wait(timeout=10).until(
-            EC.presence_of_element_located(self.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTERS_CONFIRM)
-        )
+        catalog_groups_tab_filters_confirm = self.find(self.locators.CATALOG_GROUPS_CREATE_BY_FILTERS_CONFIRM, timeout=5)
         catalog_groups_tab_filters_confirm.click()
 
     def click_catalog_diagnostics_tab(self):
-        self.became_invisible(self.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTER_MODAL, 5)
-        catalog_diagnostics_tab = self.wait(timeout=5).until(
-            EC.presence_of_element_located(self.locators.CATALOG_TAB_DIAGNOSTICS)
-        )
+        self.became_invisible(self.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTER_MODAL, 10)
+        catalog_diagnostics_tab = self.find(self.locators.CATALOG_TAB_DIAGNOSTICS, timeout=5)
         catalog_diagnostics_tab.click()
 
     def check_catalog_diagnostics_tab(self):
@@ -100,12 +91,8 @@ class CommersionPage(BasePage):
         except Exception as e:
             print(f"Error occurred while checking diagnostics all good: {e}")
 
-
-
     def click_catalog_settings_button(self):
-        catalog_setting_button = self.wait(timeout=5).until(
-            EC.presence_of_element_located(self.locators.CATALOG_SETTINGS_BUTTON)
-        )
+        catalog_setting_button = self.find(self.locators.CATALOG_SETTINGS_BUTTON, timeout=5)
         catalog_setting_button.click()
 
     def click_catalog_delete_button(self):
