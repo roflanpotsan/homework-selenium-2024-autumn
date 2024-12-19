@@ -1,7 +1,5 @@
-import time
 import pytest
-from ads_vk_test_base import BaseCase
-from ui.pages.ads_vk_landing import LandingPage
+from test_base import BaseCase
 
 
 class TestSettings(BaseCase):

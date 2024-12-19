@@ -1,4 +1,4 @@
-from ads_vk_test_base import BaseCase
+from test_base import BaseCase
 class TestCommersion(BaseCase):
     authorize = True
 

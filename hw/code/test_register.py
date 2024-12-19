@@ -1,7 +1,5 @@
 import pytest
-from ads_vk_test_base import BaseCase
-from ui.pages.ads_vk_register import RegisterPage
-
+from test_base import BaseCase
 
 class TestRegister(BaseCase):
     authorize = True
