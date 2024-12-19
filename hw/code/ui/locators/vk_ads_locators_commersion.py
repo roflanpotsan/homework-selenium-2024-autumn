@@ -62,6 +62,20 @@ class CommersionPageLocators:
         By.XPATH,
         '//span[text()="Сохранить"]',
     )
+    
+    CATALOG_TAB_GROUPS_CREATE_BY_FILTER_MODAL = (
+        By.XPATH,
+        '//div[contains(@class, "ModalRoot_componentWrapper__uzHTL")]'
+    )
+
+    CATALOG_TAB_DIAGNOSTICS = (By.CSS_SELECTOR, '[data-testid="catalog-tabs-diagnostics"]')
+
+
+
+    CATALOG_TAB_DIAGNOSTICS_ALL_GOOD = (
+        By.XPATH,
+        '//h2[text()="Всё хорошо!"]'
+    )
 
     CATALOG_SETTINGS_BUTTON = (
         By.XPATH,

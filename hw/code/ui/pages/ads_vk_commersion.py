@@ -87,6 +87,20 @@ class CommersionPage(BasePage):
         )
         catalog_groups_tab_filters_confirm.click()
 
+    def click_catalog_diagnostics_tab(self):
+        self.became_invisible(self.locators.CATALOG_TAB_GROUPS_CREATE_BY_FILTER_MODAL, 5)
+        catalog_diagnostics_tab = self.wait(timeout=5).until(
+            EC.presence_of_element_located(self.locators.CATALOG_TAB_DIAGNOSTICS)
+        )
+        catalog_diagnostics_tab.click()
+
+    def check_catalog_diagnostics_tab(self):
+        try:
+            self.find(self.locators.CATALOG_TAB_DIAGNOSTICS_ALL_GOOD, timeout=10)
+        except Exception as e:
+            print(f"Error occurred while checking diagnostics all good: {e}")
+
+
 
     def click_catalog_settings_button(self):
         catalog_setting_button = self.wait(timeout=5).until(
